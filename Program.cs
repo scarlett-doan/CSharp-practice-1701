@@ -10,7 +10,7 @@ namespace CSharpFundamental
         static void Main(string[] args)
         {
             /* Challenge 1 */
-            string text = "this is a text";
+            string text = "you can try the other text here";
             string newText = toTitleCase(text);
             Console.WriteLine(newText); // expect to see "This Is A Text"
 
@@ -37,20 +37,27 @@ namespace CSharpFundamental
         static int[,] matrixMultiply(int[,] array1, int[,] array2)
         {
             var result = new int[array1.GetLength(0),array2.GetLength(1)];
-            
-            for (int i = 0; i < array1.GetLength(0); i++)
+
+            if (array1.GetLength(1) != array2.GetLength(0))
             {
-                for (int j = 0; j < array2.GetLength(1); j++)
-                {
-                    int temp = 0;
-                    for (int k = 0; k < array1.GetLength(1); k++)
-                    {
-                        temp += array1[i, k] * array2[k, j];
-                    }
-                    result[i, j] = temp;
-                }
+                throw new ArgumentException("Cannot multiply the given arrays");
             }
-            return result;
+            else
+            {
+                for (int i = 0; i < array1.GetLength(0); i++)
+                {
+                    for (int j = 0; j < array2.GetLength(1); j++)
+                    {
+                        int temp = 0;
+                        for (int k = 0; k < array1.GetLength(1); k++)
+                        {
+                            temp += array1[i, k] * array2[k, j];
+                        }
+                        result[i, j] = temp;
+                    }
+                }
+                return result;
+            }
         }
 
         static void PrintMatrix(int[,] matrix)
