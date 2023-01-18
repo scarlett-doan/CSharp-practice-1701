@@ -27,10 +27,20 @@ namespace CSharpFundamental
             string[] tmpStr = input.Split(' ');
             string result = "";
 
-            foreach (var item in tmpStr)
+            foreach (var word in tmpStr)
             {
-                var tmpItem = (char)((short)item[0] - 32);
-                result +=  tmpItem + item.Substring(1) + ' ';
+                if ((65 <= (short)word[0] && (short)word[0] <= 90) 
+                    || (97 <= (short)word[0] && (short)word[0] <= 122))
+                {
+                    var tmpWord = (char)((short)word[0] - 32);
+                    result +=  tmpWord + word.Substring(1) + ' ';
+                }
+                else
+                {
+                    throw new ArgumentException("First character is not English alphabet");
+                    break;
+                }
+               
             }
             return result.TrimEnd();
         }
