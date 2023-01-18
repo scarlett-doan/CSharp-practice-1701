@@ -10,7 +10,7 @@ namespace CSharpFundamental
         static void Main(string[] args)
         {
             /* Challenge 1 */
-            string text = "you can try the other text here";
+            string text = "you can try the Other text here";
             string newText = toTitleCase(text);
             Console.WriteLine(newText); // expect to see "This Is A Text"
 
@@ -29,11 +29,16 @@ namespace CSharpFundamental
 
             foreach (var word in tmpStr)
             {
-                if ((65 <= (short)word[0] && (short)word[0] <= 90) 
-                    || (97 <= (short)word[0] && (short)word[0] <= 122))
+                
+                if (97 <= (short)word[0] && (short)word[0] <= 122)
                 {
                     var tmpWord = (char)((short)word[0] - 32);
                     result +=  tmpWord + word.Substring(1) + ' ';
+                }
+                else if (65 <= (short)word[0] && (short)word[0] <= 90)
+                {
+                    var keepWord = word + ' ';
+                    result += keepWord;
                 }
                 else
                 {
