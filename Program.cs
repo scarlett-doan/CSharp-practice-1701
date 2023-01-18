@@ -29,7 +29,8 @@ namespace CSharpFundamental
 
             foreach (var item in tmpStr)
             {
-                result +=  Char.ToUpper(item[0]) + item.Substring(1) + ' ';
+                var tmpItem = (char)((short)item[0] - 32);
+                result +=  tmpItem + item.Substring(1) + ' ';
             }
             return result.TrimEnd();
         }
