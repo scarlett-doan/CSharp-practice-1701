@@ -37,8 +37,7 @@ namespace CSharpFundamental
                 }
                 else
                 {
-                    throw new ArgumentException("First character is not English alphabet");
-                    break;
+                    throw new ArgumentException("First character of (some) word(s) is not English alphabet");
                 }
                
             }
